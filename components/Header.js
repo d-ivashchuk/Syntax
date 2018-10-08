@@ -1,22 +1,22 @@
-import Subscribe from "./Subscribe";
-import styled from "styled-components";
+import Subscribe from './Subscribe';
+import styled from 'styled-components';
+import StyledHeader from '../styles';
 
-const StyledHeader = styled.header`
+const HeaderContainer = styled(StyledHeader)`
   display: flex;
-  color: white;
   flex-wrap: wrap;
-  margin: 2rem auto;
   max-width: 1000px;
+  margin: 2rem auto;
+  color: white;
 `;
-
-const LeftHeaderSection = styled.div`
+const HeaderLeft = styled.div`
   width: 30%;
   text-align: center;
   @media (max-width: 800px) {
     width: 100%;
   }
 `;
-const RightHeaderSection = styled.div`
+const HeaderRight = styled.div`
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,6 @@ const Logo = styled.img`
     margin-left: -2rem;
   }
 `;
-
 const Title = styled.div`
   position: relative;
   h2 {
@@ -99,13 +98,13 @@ const Avatar = styled.img`
   }
 `;
 const Header = () => (
-  <StyledHeader>
-    <LeftHeaderSection>
+  <HeaderContainer>
+    <HeaderLeft>
       <h1 aria-label="Syntax.FM">
         <Logo src="/static/logo.png" alt="Syntax" />
       </h1>
-    </LeftHeaderSection>
-    <RightHeaderSection>
+    </HeaderLeft>
+    <HeaderRight>
       <Title>
         <h2>A Tasty Treats Podcast for Web Developers.</h2>
         <a
@@ -123,7 +122,7 @@ const Header = () => (
             @wesbos
           </a>
           <p>
-            Full Stack JavaScript Developer. Creator of really good{" "}
+            Full Stack JavaScript Developer. Creator of really good{' '}
             <a target="_blank" href="https://wesbos.com/courses">
               web development courses
             </a>
@@ -141,18 +140,18 @@ const Header = () => (
             @stolinski
           </a>
           <p>
-            Web Developer, Creator of{" "}
+            Web Developer, Creator of{' '}
             <a href="https://leveluptutorials.com/">Level Up Tuts</a>, Bboy,
-            Robotops Crew and{" "}
+            Robotops Crew and{' '}
             <a target="_blank" href="https://www.youtube.com/c/leveluptuts">
               Youtuber
             </a>
           </p>
         </div>
       </People>
-    </RightHeaderSection>
+    </HeaderRight>
     <Subscribe />
-  </StyledHeader>
+  </HeaderContainer>
 );
 
 export default Header;
