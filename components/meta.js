@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import stylesheet from '../styles/style.styl';
+// import stylesheet from '../styles/style.styl';
 import slug from 'speakingurl';
 
 export default ({ show, baseURL }) => (
@@ -23,7 +23,7 @@ export default ({ show, baseURL }) => (
       <title>
         {show.title} — Syntax Podcast {show.displayNumber}
       </title>
-      <style dangerouslySetInnerHTML={{ __html: stylesheet.replace(/\n/g, '') }} />
+      {/* <style dangerouslySetInnerHTML={{ __html: stylesheet.replace(/\n/g, '') }} /> */}
     </Head>
   </div>
 );
