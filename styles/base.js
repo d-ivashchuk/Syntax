@@ -1,4 +1,5 @@
 import { injectGlobal } from 'styled-components';
+import theme from './theme';
 
 const base = injectGlobal`
   @font-face {
@@ -31,7 +32,9 @@ const base = injectGlobal`
     font-size: 10px;
     line-height: 1.5;
     background: black url('/static/background.jpg');
-    border-top: 3px solid yellow;
+    border-top: 3px solid ${theme.colors.yellow};
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -48,26 +51,15 @@ const base = injectGlobal`
   }
 
   a {
-    color: yellow;
+    color: ${theme.colors.yellow};
     text-decoration: none;
   }
 
-  .tagline {
-    font-size: 2.5rem;
-    margin: 0;
-    @media (max-width: 1000px) {
-      text-align: center;
-    }
-    @media (max-width: 800px) {
-      font-size: 1.5rem;
-    }
-  }
-
-  .wrapper, .header, .footer {
+  .wrapper, .footer {
     max-width: 1000px;
     margin: 0 auto;
     &--text {
-      background: white;
+      background: ${theme.colors.white};
       padding: 2rem;
       font-size: 1.7rem;
     }
