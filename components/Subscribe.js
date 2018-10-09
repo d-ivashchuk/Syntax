@@ -121,7 +121,7 @@ const RSS = styled(SubscribeLink)`
   }
 `;
 
-const Subscribe = props => (
+const Subscribe = () => (
   <SubscribeContainer>
     <SubscribeLinks>
       <Itunes>

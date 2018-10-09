@@ -55,7 +55,7 @@ const base = injectGlobal`
     text-decoration: none;
   }
 
-  .wrapper, .footer {
+  .wrapper {
     max-width: 1000px;
     margin: 0 auto;
     &--text {
