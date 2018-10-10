@@ -7,18 +7,20 @@ import formatTime from '../lib/formatTime';
 import { theme, mixins } from '../styles';
 
 const PlayerContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  position: sticky;
+  top: -1px;
   bottom: 0;
   width: 100%;
+  height: 100px;
   background: ${theme.colors.black};
   border-top: 1px solid ${theme.colors.yellow};
   color: ${theme.colors.white};
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  position: sticky;
-  top: -1px;
   z-index: 2;
-
+  & > * {
+    height: 100%;
+  }
   button {
     ${mixins.flexCenter};
     justify-content: space-around;
@@ -76,7 +78,7 @@ const SpeedDisplay = styled.span`
   line-height: 2;
 `;
 const Progress = styled.div`
-  background: #000000;
+  background: #0d0d0d;
   width: 100%;
   height: 1rem;
   cursor: crosshair;

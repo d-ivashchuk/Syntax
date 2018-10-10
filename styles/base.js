@@ -90,102 +90,24 @@ const base = injectGlobal`
   button[disabled],input[disabled] {
     cursor: default;
   }
+  textarea {
+    overflow: auto;
+    vertical-align: top;
+  }
 
+  figure, figcaption {
+    margin: 0;
+  }
 
-  audio,
-  canvas,
-  video {
+  audio, canvas, video {
     display: inline-block;
   }
   audio:not([controls]) {
     display: none;
     height: 0;
   }
-  [hidden] {
-    display: none;
-  }
-  abbr[title] {
-    border-bottom:1px dotted;
-  }
   b, strong {
-    font-weight:700;
-  }
-  dfn {
-    font-style:italic;
-  }
-  mark {
-    background: #ff0;
-    color: #000;
-  }
-  code, kbd, pre, samp {
-    font-family:monospace, serif;
-    font-size:1em;
-  }
-  pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  q {
-    quotes: \201C \201D \2018 \2019;
-  }
-  small {
-    font-size: 80%;
-  }
-  sub, sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-  }
-  sup {
-    top: -.5em;
-  }
-  sub {
-    bottom: -.25em;
-  }
-  fieldset {
-    border: 1px solid silver;
-    margin: 0 2px;
-    padding: .35em .625em .75em;
-  }
-  input[type=checkbox], input[type=radio] {
-      box-sizing: border-box;
-      padding: 0;
-  }
-  input[type=search] {
-    -webkit-appearance: textfield;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-  }
-  input[type=search]::-webkit-search-cancel-button,
-  input[type=search]::-webkit-search-decoration {
-    -webkit-appearance:none;
-  }
-  textarea
-    overflow:auto;
-    vertical-align:top;
-  }
-  table{
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  figure{
-    margin: 0;
-  }
-  legend,
-  button::-moz-focus-inner,
-  input::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-  }
-  .clearfix:after {
-    content: '';
-    display: block;
-    visibility: hidden;
-    clear: both;
-    font-size: 0;
-    height: 0;
+    font-weight: 700;
   }
 
 `;

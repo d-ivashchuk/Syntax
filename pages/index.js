@@ -9,9 +9,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Page from '../components/Page';
 
-import { StyledWrapper } from '../styles';
+import { theme, StyledWrapper } from '../styles';
 
 const Wrapper = styled(StyledWrapper)``;
+const ShowWrap = styled.div`
+  background: ${theme.colors.white};
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 export default class IndexPage extends React.Component {
   constructor(props) {
@@ -61,7 +66,7 @@ export default class IndexPage extends React.Component {
       <Page>
         <Meta show={show} baseURL={baseURL} />
         <Wrapper>
-          <div className="show-wrap">
+          <ShowWrap id="main" tabIndex="-1">
             <Player show={current} />
             <ShowList
               shows={shows}
@@ -70,7 +75,7 @@ export default class IndexPage extends React.Component {
               setCurrentPlaying={this.setCurrentPlaying}
             />
             <ShowNotes show={show} setCurrentPlaying={this.setCurrentPlaying} />
-          </div>
+          </ShowWrap>
         </Wrapper>
       </Page>
     );

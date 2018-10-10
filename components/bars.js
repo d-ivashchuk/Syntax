@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
+import { theme } from '../styles';
 
 const BarsContainer = styled.div`
   height: 30px;
@@ -9,23 +9,23 @@ const BarsContainer = styled.div`
 const sound = keyframes`
   0% {
     opacity: .35;
-    background: yellow;
+    background: ${theme.colors.yellow};
     height: 3px;
   }
   100% {
     opacity: 1;
-    background: darken(yellow,20%);
+    background: #eba91f;
     height: 28px;
   }
 `;
-
 const Bar = styled.div`
-  background: green;
-  bottom: 1px;
-  height: 3px;
   position: absolute;
+  bottom: 1px;
   width: 3px;
+  height: 3px;
+  background: ${theme.colors.green};
   animation: ${sound} 0ms -800ms linear infinite alternate;
+  animation-play-state: paused;
 
   &:nth-child(1) {
     left: 1px;
@@ -35,49 +35,41 @@ const Bar = styled.div`
     left: 5px;
     animation-duration: 433ms;
   }
-
   &:nth-child(3) {
     left: 9px;
     animation-duration: 407ms;
   }
-
   &:nth-child(4) {
     left: 13px;
     animation-duration: 458ms;
   }
-
   &:nth-child(5) {
     left: 17px;
     animation-duration: 400ms;
   }
-
   &:nth-child(6) {
     left: 21px;
     animation-duration: 427ms;
   }
-
   &:nth-child(7) {
     left: 25px;
     animation-duration: 441ms;
   }
-
   &:nth-child(8) {
     left: 29px;
     animation-duration: 419ms;
   }
-
   &:nth-child(9) {
     left: 33px;
     animation-duration: 487ms;
   }
-
   &:nth-child(10) {
     left: 37px;
     animation-duration: 442ms;
   }
 `;
 
-export default () => (
+const Bars = () => (
   <BarsContainer>
     <Bar />
     <Bar />
@@ -88,3 +80,5 @@ export default () => (
     <Bar />
   </BarsContainer>
 );
+
+export default Bars;

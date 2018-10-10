@@ -91,6 +91,7 @@ const Avatar = styled.img`
   box-shadow: inset 0 0 10px red;
   @media (max-width: 800px) {
     width: 50px;
+    height: 50px;
     border-width: 1px;
   }
 `;

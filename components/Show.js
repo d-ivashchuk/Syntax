@@ -1,102 +1,103 @@
-import React from "react";
-import styled from "styled-components";
-import { css } from "styled-components";
-import Link from "next/link";
-import slug from "speakingurl";
-import Router from "next/router";
-import Bars from "./bars";
-import { FaPlay } from "react-icons/fa";
+import React from 'react';
+import styled from 'styled-components';
+import Link from 'next/link';
+import slug from 'speakingurl';
+import Router from 'next/router';
+import { FaPlay } from 'react-icons/fa';
+import Bars from './bars';
 
-const StyledShow = styled.div`
-  ${props =>
-    props.isActive &&
-    css`
-      border-right-color: #fff;
-      background: #fff;
-      border-left: 0;
-      padding-left: 1rem;
-      &:before {
-        display: block;
-        background: linear-gradient(30deg, #d2ff52 0%, #03fff3 100%);
-        width: 10px;
-        height: 100%;
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -10px;
-      }
-    `};
-  border-right: 1px solid #e4e4e4;
-  border-bottom: 1px solid #e4e4e4;
-  border-left: 10px solid #e4e4e4;
-  background: #f9f9f9;
-  position: relative;
+import { theme, mixins } from '../styles';
+
+const ShowContainer = styled.div`
   display: flex;
-  cursor: pointer;
-  p {
-    text-transform: uppercase;
-    margin: 0;
-    color: #666;
-    font-size: 11px;
-  }
-  h3 {
-    color: #1d1d1d;
-    font-size: 1.5rem;
-    margin: 0;
-  }
-  a {
-    flex: 1 1 auto;
-    padding: 10px;
+  position: relative;
+  background: ${props =>
+    props.active ? theme.colors.lightgrey : theme.colors.white};
+  border: 1px solid ${theme.colors.grey};
+  border-left: ${props =>
+    props.active ? 0 : `10px solid ${theme.colors.grey}`};
+  border-right-color: ${props =>
+    props.active ? theme.colors.white : theme.colors.grey};
+  padding-left: ${props => (props.active ? `1rem` : ``)};
+
+  &:before {
+    content: '';
+    display: ${props => (props.active ? 'block' : 'none')};
+    background: ${theme.colors.grad};
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
   }
 `;
-const PlayControls = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const ShowLink = styled.a`
+  flex: 1 1 auto;
+  padding: 10px;
+`;
+const ShowNumber = styled.p`
+  text-transform: uppercase;
+  margin: 0;
+  color: ${theme.colors.grey3};
+  font-size: 11px;
+`;
+const ShowTitle = styled.h3`
+  color: ${theme.colors.black};
+  font-size: 1rem;
+  margin: 0;
+`;
+const ShowPlayControls = styled.div`
+  ${mixins.flexCenter};
   width: 5rem;
   flex-shrink: 0;
   padding: 1rem;
+
   button {
     background: none;
     border: 0;
-    outline-color: #ff0;
+    outline-color: ${theme.colors.yellow};
     &:hover {
-      color: #f1c15d;
+      color: ${theme.colors.yellow};
     }
   }
 `;
-export default class Show extends React.Component {
+
+class Show extends React.Component {
   changeURL = (e, show) => {
     e.preventDefault();
-    const href = e.currentTarget.href;
+    const { href } = e.currentTarget;
     Router.push(`/?number=${show.displayNumber}`, href, { shallow: true });
   };
 
   render() {
     const { show, currentPlaying, currentShow, setCurrentPlaying } = this.props;
+
     return (
-      <StyledShow isActive={currentShow === show.displayNumber}>
-        <a
+      <ShowContainer active={currentShow === show.displayNumber}>
+        <ShowLink
           href={`/show/${show.displayNumber}/${slug(show.title)}`}
           onClick={e => this.changeURL(e, show)}
         >
-          <p>Episode {show.displayNumber}</p>
-          <h3>{show.title}</h3>
-        </a>
+          <ShowNumber>Episode {show.displayNumber}</ShowNumber>
+          <ShowTitle>{show.title}</ShowTitle>
+        </ShowLink>
 
-        <PlayControls>
+        <ShowPlayControls>
           {currentPlaying === show.displayNumber ? (
             <Bars />
           ) : (
             <button
               onClick={() => setCurrentPlaying(show.displayNumber)}
               title="play button"
+              type="button"
             >
               <FaPlay />
             </button>
           )}
-        </PlayControls>
-      </StyledShow>
+        </ShowPlayControls>
+      </ShowContainer>
     );
   }
 }
+
+export default Show;
