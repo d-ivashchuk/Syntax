@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import ShowList from '../components/ShowList';
 import ShowNotes from '../components/ShowNotes';
 import Player from '../components/Player';
@@ -8,6 +9,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Page from '../components/Page';
 
+import { StyledWrapper } from '../styles';
+
+const Wrapper = styled(StyledWrapper)``;
+
 export default class IndexPage extends React.Component {
   constructor(props) {
     super();
@@ -15,19 +20,26 @@ export default class IndexPage extends React.Component {
 
     this.state = {
       currentShow,
-      currentPlaying: currentShow
+      currentPlaying: currentShow,
     };
   }
 
   static async getInitialProps({ req }) {
-    const protocol = req && req.headers.host.indexOf('syntax.fm') > -1 ? 'https' : req ? req.protocol : '';
-    const baseURL = req ? `${protocol}://${req.headers.host}` : window.location.origin;
+    const protocol =
+      req && req.headers.host.indexOf('syntax.fm') > -1
+        ? 'https'
+        : req
+          ? req.protocol
+          : '';
+    const baseURL = req
+      ? `${protocol}://${req.headers.host}`
+      : window.location.origin;
     const { data: shows } = await axios.get(`${baseURL}/api/shows`);
     return { shows, baseURL };
   }
 
   componentWillReceiveProps(nextProps) {
-    const { pathname, query } = nextProps.url;
+    const { query } = nextProps.url;
     if (query.number) {
       this.setState({ currentShow: query.number });
     }
@@ -48,7 +60,7 @@ export default class IndexPage extends React.Component {
     return (
       <Page>
         <Meta show={show} baseURL={baseURL} />
-        <div className="wrapper">
+        <Wrapper>
           <div className="show-wrap">
             <Player show={current} />
             <ShowList
@@ -59,7 +71,7 @@ export default class IndexPage extends React.Component {
             />
             <ShowNotes show={show} setCurrentPlaying={this.setCurrentPlaying} />
           </div>
-        </div>
+        </Wrapper>
       </Page>
     );
   }

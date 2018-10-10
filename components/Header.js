@@ -107,9 +107,10 @@ const About = styled.p`
 const Header = () => (
   <HeaderContainer>
     <HeaderLeft>
-      <h1 aria-label="Syntax.FM">
-        <Logo src="/static/logo.png" alt="Syntax Logo" />
+      <h1 aria-label="Syntax.FM" hidden>
+        Syntax.FM
       </h1>
+      <Logo src="/static/logo.png" alt="Syntax Logo" />
     </HeaderLeft>
     <HeaderRight>
       <Title>
