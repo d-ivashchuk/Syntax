@@ -14,7 +14,7 @@ const theme = {
     green: `#03fff3`,
     newgrey: `#645555`,
 
-    grad: `linear-gradient(30deg, #d2ff52 0%, green 100%)`,
+    grad: `linear-gradient(30deg, #d2ff52 0%, #03fff3 100%)`,
   },
 
   gradients: {

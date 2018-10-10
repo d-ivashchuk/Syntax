@@ -18,7 +18,7 @@ const SubscribeLinks = styled.ul`
 `;
 const SubscribeLink = styled.li`
   flex: 0 1 auto;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   @media (max-width: 570px) {
     flex: 1 1 auto;
     margin-right: 1rem;

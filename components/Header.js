@@ -47,13 +47,14 @@ const Tagline = styled.h2`
   }
 `;
 const PotluckButton = styled.a`
+  position: absolute;
+  top: 5px;
+  right: 0;
+  padding: 5px 10px;
   border: 1px solid ${theme.colors.yellow};
   border-radius: 3px;
-  padding: 5px 10px;
-  position: absolute;
-  right: 0;
-  top: 5px;
   font-size: 12px;
+  text-decoration: none;
   &:hover {
     border: 1px dotted;
   }
@@ -74,7 +75,7 @@ const People = styled.div`
 const Person = styled.div`
   display: flex;
   background: rgba(255, 255, 255, 0.07);
-  padding: 1rem;
+  padding: 0.5rem;
   width: 48%;
   @media (max-width: 800px) {
     width: 100%;

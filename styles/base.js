@@ -35,8 +35,6 @@ const base = injectGlobal`
     border-top: 3px solid ${theme.colors.yellow};
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -70,26 +68,44 @@ const base = injectGlobal`
       outline:0;
     }
 
-    &:focus{
+    &:focus {
       outline: thin dotted;
     }
   }
 
-  /* Normalize */
+
+  button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+  }
+  button, input {
+    line-height: normal;
+  }
+  button,html input[type=button],
+  input[type=reset],input[type=submit] {
+  -webkit-appearance:button;
+  cursor: pointer;
+  }
+  button[disabled],input[disabled] {
+    cursor: default;
+  }
+
+
   audio,
   canvas,
   video {
     display: inline-block;
   }
-  audio:not([controls]){
+  audio:not([controls]) {
     display: none;
     height: 0;
   }
-  [hidden]{
+  [hidden] {
     display: none;
   }
   abbr[title] {
-      border-bottom:1px dotted;
+    border-bottom:1px dotted;
   }
   b, strong {
     font-weight:700;
@@ -98,16 +114,16 @@ const base = injectGlobal`
     font-style:italic;
   }
   mark {
-    background:#ff0;
-    color:#000;
+    background: #ff0;
+    color: #000;
   }
   code, kbd, pre, samp {
     font-family:monospace, serif;
     font-size:1em;
   }
   pre {
-    white-space:pre-wrap;
-    word-wrap:break-word;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
   q {
     quotes: \201C \201D \2018 \2019;
@@ -132,23 +148,7 @@ const base = injectGlobal`
     margin: 0 2px;
     padding: .35em .625em .75em;
   }
-  button, input, select, textarea {
-    font-family: inherit;
-    font-size: 100%;
-    margin: 0;
-  }
-  button, input {
-    line-height: normal;
-  }
-  button,html input[type=button],
-  input[type=reset],input[type=submit] {
-    -webkit-appearance:button;
-    cursor: pointer;
-  }
-  button[disabled],input[disabled] {
-      cursor: default;
-  }
-  input[type=checkbox],input[type=radio] {
+  input[type=checkbox], input[type=radio] {
       box-sizing: border-box;
       padding: 0;
   }
@@ -162,7 +162,7 @@ const base = injectGlobal`
   input[type=search]::-webkit-search-decoration {
     -webkit-appearance:none;
   }
-  textarea{
+  textarea
     overflow:auto;
     vertical-align:top;
   }
