@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import slug from 'speakingurl';
 import Router from 'next/router';
 import { FaPlay } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 import Bars from './bars';
-
 import { theme, mixins } from '../styles';
 
 const ShowContainer = styled.div`
@@ -109,5 +109,13 @@ class Show extends React.Component {
     );
   }
 }
+
+Show.propTypes = {
+  show: PropTypes.object.isRequired,
+  currentPlaying: PropTypes.string.isRequired,
+  currentShow: PropTypes.string.isRequired,
+  setCurrentPlaying: PropTypes.func.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+};
 
 export default Show;

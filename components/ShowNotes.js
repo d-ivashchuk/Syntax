@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { theme, mixins, media, StyledButton } from '../styles';
 
 const ShowNotesContainer = styled.div`
@@ -97,5 +98,10 @@ const ShowNotes = ({ show, setCurrentPlaying }) => (
     <div dangerouslySetInnerHTML={{ __html: show.html }} />
   </ShowNotesContainer>
 );
+
+ShowNotes.propTypes = {
+  show: PropTypes.object.isRequired,
+  setCurrentPlaying: PropTypes.func.isRequired,
+};
 
 export default ShowNotes;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import formatTime from '../lib/formatTime';
-
 import { theme, mixins, media } from '../styles';
 
 const PlayerContainer = styled.div`
@@ -161,7 +161,7 @@ const PlayerVolume = styled.div`
     }
   }
 `;
-export default class Player extends React.Component {
+class Player extends React.Component {
   constructor(props) {
     super(props);
 
@@ -422,3 +422,9 @@ export default class Player extends React.Component {
     );
   }
 }
+
+Player.propTypes = {
+  getPlayerState: PropTypes.func.isRequired,
+};
+
+export default Player;

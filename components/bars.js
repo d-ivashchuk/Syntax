@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import PropTypes from 'prop-types';
 import { theme } from '../styles';
 
 const sound = keyframes`
@@ -83,5 +84,9 @@ const Bars = ({ isPlaying }) => (
     <Bar />
   </BarsContainer>
 );
+
+Bars.propTypes = {
+  isPlaying: PropTypes.bool.isRequired,
+};
 
 export default Bars;
