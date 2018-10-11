@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, StyledHeader } from '../styles';
+import { theme, media, StyledHeader } from '../styles';
 
 import Subscribe from './Subscribe';
 
@@ -12,26 +12,26 @@ const HeaderContainer = styled(StyledHeader)`
 const HeaderLeft = styled.div`
   width: 30%;
   text-align: center;
-  @media (max-width: 800px) {
+  ${media.tablet`
     width: 100%;
-  }
+  `};
 `;
 const Logo = styled.img`
   margin-left: -3rem;
   max-width: 300px;
   text-align: center;
-  @media (max-width: 800px) {
+  ${media.tablet`
     margin-left: -2rem;
-  }
+  `};
 `;
 const HeaderRight = styled.div`
   width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  @media (max-width: 800px) {
+  ${media.tablet`
     width: 100%;
-  }
+  `};
 `;
 const Title = styled.div`
   position: relative;
@@ -39,12 +39,12 @@ const Title = styled.div`
 const Tagline = styled.h2`
   font-size: 1.5rem;
   margin: 0;
-  @media (max-width: 1000px) {
+  ${media.desktop`
     text-align: center;
-  }
-  @media (max-width: 800px) {
+  `};
+  ${media.tablet`;
     font-size: 1.5rem;
-  }
+  `};
 `;
 const PotluckButton = styled.a`
   position: absolute;
@@ -58,13 +58,13 @@ const PotluckButton = styled.a`
   &:hover {
     border: 1px dotted;
   }
-  @media (max-width: 1000px) {
+  ${media.desktop`
     position: relative;
     margin: 10px 0;
     text-align: center;
     display: block;
     top: 0;
-  }
+  `};
 `;
 const People = styled.div`
   display: flex;
@@ -77,10 +77,10 @@ const Person = styled.div`
   background: rgba(255, 255, 255, 0.07);
   padding: 0.5rem;
   width: 48%;
-  @media (max-width: 800px) {
+  ${media.tablet`
     width: 100%;
     margin-bottom: 1rem;
-  }
+  `};
 `;
 const Avatar = styled.img`
   border-radius: 50%;
@@ -89,11 +89,11 @@ const Avatar = styled.img`
   margin-right: 20px;
   border: 3px solid ${theme.colors.white};
   box-shadow: inset 0 0 10px red;
-  @media (max-width: 800px) {
+  ${media.tablet`
     width: 50px;
     height: 50px;
     border-width: 1px;
-  }
+  `};
 `;
 const PersonDetails = styled.div``;
 const Name = styled.h3`
@@ -109,10 +109,9 @@ const About = styled.p`
 const Header = () => (
   <HeaderContainer>
     <HeaderLeft>
-      <h1 aria-label="Syntax.FM" hidden>
-        Syntax.FM
+      <h1 aria-label="Syntax.FM">
+        <Logo src="/static/logo.png" alt="Syntax Logo" />
       </h1>
-      <Logo src="/static/logo.png" alt="Syntax Logo" />
     </HeaderLeft>
     <HeaderRight>
       <Title>

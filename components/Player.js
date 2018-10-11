@@ -1,10 +1,10 @@
 import React from 'react';
-import { FaPlay, FaPause } from 'react-icons/fa';
+import { FaPlay, FaPause, FaThemeisle } from 'react-icons/fa';
 import styled from 'styled-components';
 import Show from './Show';
 import formatTime from '../lib/formatTime';
 
-import { theme, mixins } from '../styles';
+import { theme, mixins, media } from '../styles';
 
 const PlayerContainer = styled.div`
   display: flex;
@@ -36,9 +36,9 @@ const PlayerContainer = styled.div`
 const PlayerLeft = styled.div`
   width: 100px;
   min-width: 80px;
-  @media (max-width: 650px) {
+  ${media.phablet`
     flex: 1;
-  }
+  `};
 `;
 const PlayButton = styled.button`
   width: 100%;
@@ -53,16 +53,16 @@ const PlayerMiddle = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  @media (max-width: 650px) {
+  ${media.phablet`
     order: 1;
     width: 100%;
-  }
+  `};
 `;
 const PlayerRight = styled.div`
   display: flex;
-  @media (max-width: 650px) {
+  ${media.phablet`
     flex: 2;
-  }
+  `};
 `;
 const PlayerSpeed = styled.button`
   flex: 0 1 auto;
@@ -101,9 +101,9 @@ const PlayerTitle = styled.h3`
   margin: 0;
   padding-left: 1rem;
   font-size: 1rem;
-  @media (max-width: 650px) {
+  ${media.phablet`
     padding: 1rem;
-  }
+  `};
 `;
 const PlayerInputs = styled.div`
   font-size: 0;
@@ -189,7 +189,7 @@ export default class Player extends React.Component {
     this.audio.playbackRate = nextState.playbackRate;
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { show } = this.props;
     const { currentTime } = this.state;
 
@@ -198,9 +198,7 @@ export default class Player extends React.Component {
 
       if (lp) {
         const data = JSON.parse(lp);
-        this.setState({
-          currentTime: data.lastPlayed,
-        });
+        this.setState({ currentTime: data.lastPlayed });
         this.audio.currentTime = data.lastPlayed;
       }
 
@@ -248,8 +246,8 @@ export default class Player extends React.Component {
 
   playPause = () => {
     this.setState({ playing: !this.audio.paused });
-    const method = this.audio.paused ? 'add' : 'remove';
-    document.querySelector('.bars').classList[method]('bars--paused'); // 💩
+    // const method = this.audio.paused ? 'add' : 'remove';
+    // document.querySelector('.bars').classList[method]('bars--paused'); // 💩
   };
 
   volume = e => {

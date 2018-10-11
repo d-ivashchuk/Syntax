@@ -29,6 +29,7 @@ export default class IndexPage extends React.Component {
     this.state = {
       currentShow,
       currentPlaying: currentShow,
+      playing: false,
     };
   }
 
@@ -53,6 +54,8 @@ export default class IndexPage extends React.Component {
     }
   }
 
+  isPlaying = bool => this.setState({ playing: bool });
+
   setCurrentPlaying = currentPlaying => {
     console.log('Setting current playing');
     this.setState({ currentPlaying });
@@ -68,12 +71,18 @@ export default class IndexPage extends React.Component {
     // Currently Playing
     const current = shows.find(show => show.displayNumber === currentPlaying);
 
+    console.log(this.state.playing);
+
     return (
       <Page>
         <Meta show={currentShowNotes} baseURL={baseURL} />
         <Wrapper>
           <ShowWrap id="main" tabIndex="-1">
-            <Player show={current} />
+            <Player
+              show={current}
+              ref={x => (this.player = x)}
+              isPlaying={this.isPlaying}
+            />
             <ShowList
               shows={shows}
               currentShow={currentShow}

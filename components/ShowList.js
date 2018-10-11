@@ -2,16 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import Show from './Show';
 
-import { theme } from '../styles';
+import { theme, media } from '../styles';
 
 const ShowListContainer = styled.div`
   width: 38%;
   display: flex;
   flex-direction: column;
-
-  @media (max-width: 650px) {
+  ${media.phablet`
     width: 100%;
-  }
+  `};
 `;
 const DummyShow = styled.div`
   display: flex;

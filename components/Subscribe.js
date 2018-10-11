@@ -1,29 +1,26 @@
 import styled from 'styled-components';
-import { theme } from '../styles';
+import { theme, media } from '../styles';
 
 const SubscribeContainer = styled.div`
   width: 100%;
 `;
 const SubscribeLinks = styled.ul`
-  margin: 0;
-  padding: 0;
   display: flex;
-  list-style: none;
   align-items: stretch;
   flex-wrap: wrap;
   justify-content: space-between;
-  @media (max-width: 800px) {
-    justify-content: space-between;
-  }
+  list-style: none;
+  margin: 0;
+  padding: 0;
 `;
 const SubscribeLink = styled.li`
   flex: 0 1 auto;
   margin-bottom: 1rem;
-  @media (max-width: 570px) {
+  ${media.phone`
     flex: 1 1 auto;
     margin-right: 1rem;
     margin-bottom: 1rem;
-  }
+  `};
 
   a {
     display: flex;

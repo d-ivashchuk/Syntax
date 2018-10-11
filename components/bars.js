@@ -5,6 +5,10 @@ const BarsContainer = styled.div`
   height: 30px;
   width: 40px;
   position: relative;
+
+  & > * {
+    animation-play-state: ${props => (props.playing ? `paused` : `running`)};
+  }
 `;
 const sound = keyframes`
   0% {
@@ -25,8 +29,6 @@ const Bar = styled.div`
   height: 3px;
   background: ${theme.colors.green};
   animation: ${sound} 0ms -800ms linear infinite alternate;
-
-  /* animation-play-state: paused; */
 
   &:nth-child(1) {
     left: 1px;
@@ -70,8 +72,8 @@ const Bar = styled.div`
   }
 `;
 
-const Bars = () => (
-  <BarsContainer>
+const Bars = ({ playing }) => (
+  <BarsContainer playing={playing}>
     <Bar />
     <Bar />
     <Bar />

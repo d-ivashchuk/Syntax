@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme, mixins, StyledButton } from '../styles';
+import { theme, mixins, media, StyledButton } from '../styles';
 
 const ShowNotesContainer = styled.div`
   padding: 1rem;
   width: 62%;
   font-size: 0.9rem;
-  @media (max-width: 650px) {
+  ${media.phablet`
     width: 100%;
-  }
+  `};
   pre {
     background: ${theme.colors.lightgrey};
     padding: 1rem;
