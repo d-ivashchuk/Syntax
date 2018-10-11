@@ -25,7 +25,8 @@ const Bar = styled.div`
   height: 3px;
   background: ${theme.colors.green};
   animation: ${sound} 0ms -800ms linear infinite alternate;
-  animation-play-state: paused;
+
+  /* animation-play-state: paused; */
 
   &:nth-child(1) {
     left: 1px;

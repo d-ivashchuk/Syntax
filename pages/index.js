@@ -21,7 +21,10 @@ const ShowWrap = styled.div`
 export default class IndexPage extends React.Component {
   constructor(props) {
     super();
-    const currentShow = props.url.query.number || props.shows[0].displayNumber;
+
+    const { url, shows } = props;
+
+    const currentShow = url.query.number || shows[0].displayNumber;
 
     this.state = {
       currentShow,
@@ -59,12 +62,15 @@ export default class IndexPage extends React.Component {
     const { shows = [], baseURL } = this.props;
     const { currentShow, currentPlaying } = this.state;
     // Currently Shown shownotes
-    const show = shows.find(show => show.displayNumber === currentShow);
+    const currentShowNotes = shows.find(
+      show => show.displayNumber === currentShow
+    );
     // Currently Playing
     const current = shows.find(show => show.displayNumber === currentPlaying);
+
     return (
       <Page>
-        <Meta show={show} baseURL={baseURL} />
+        <Meta show={currentShowNotes} baseURL={baseURL} />
         <Wrapper>
           <ShowWrap id="main" tabIndex="-1">
             <Player show={current} />
@@ -74,7 +80,10 @@ export default class IndexPage extends React.Component {
               currentPlaying={currentPlaying}
               setCurrentPlaying={this.setCurrentPlaying}
             />
-            <ShowNotes show={show} setCurrentPlaying={this.setCurrentPlaying} />
+            <ShowNotes
+              show={currentShowNotes}
+              setCurrentPlaying={this.setCurrentPlaying}
+            />
           </ShowWrap>
         </Wrapper>
       </Page>

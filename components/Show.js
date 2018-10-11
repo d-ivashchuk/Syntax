@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
 import slug from 'speakingurl';
 import Router from 'next/router';
 import { FaPlay } from 'react-icons/fa';
@@ -11,9 +10,10 @@ import { theme, mixins } from '../styles';
 const ShowContainer = styled.div`
   display: flex;
   position: relative;
-  background: ${props =>
-    props.active ? theme.colors.lightgrey : theme.colors.white};
-  border: 1px solid ${theme.colors.grey};
+  background-color: ${props =>
+    props.active ? theme.colors.white : theme.colors.lightgrey};
+  border-bottom: 1px solid ${theme.colors.grey};
+  border-right: 1px solid ${theme.colors.grey};
   border-left: ${props =>
     props.active ? 0 : `10px solid ${theme.colors.grey}`};
   border-right-color: ${props =>
@@ -33,7 +33,7 @@ const ShowContainer = styled.div`
 `;
 const ShowLink = styled.a`
   flex: 1 1 auto;
-  padding: 10px;
+  padding: 0.75rem;
 `;
 const ShowNumber = styled.p`
   text-transform: uppercase;
@@ -49,17 +49,17 @@ const ShowTitle = styled.h3`
 `;
 const ShowPlayControls = styled.div`
   ${mixins.flexCenter};
-  width: 5rem;
+  width: 3rem;
   flex-shrink: 0;
-  padding: 1rem;
-
-  button {
-    background: none;
-    border: 0;
-    outline-color: ${theme.colors.yellow};
-    &:hover {
-      color: ${theme.colors.yellow};
-    }
+  padding: 0.5rem;
+`;
+const PlayButton = styled.button`
+  background: none;
+  border: 0;
+  outline-color: ${theme.colors.yellow};
+  padding: 0.5rem;
+  &:hover {
+    color: ${theme.colors.yellow};
   }
 `;
 
@@ -74,7 +74,10 @@ class Show extends React.Component {
     const { show, currentPlaying, currentShow, setCurrentPlaying } = this.props;
 
     return (
-      <ShowContainer active={currentShow === show.displayNumber}>
+      <ShowContainer
+        active={currentShow === show.displayNumber}
+        playing={currentPlaying === show.displayNumber}
+      >
         <ShowLink
           href={`/show/${show.displayNumber}/${slug(show.title)}`}
           onClick={e => this.changeURL(e, show)}
@@ -87,13 +90,13 @@ class Show extends React.Component {
           {currentPlaying === show.displayNumber ? (
             <Bars />
           ) : (
-            <button
+            <PlayButton
               onClick={() => setCurrentPlaying(show.displayNumber)}
               title="play button"
               type="button"
             >
               <FaPlay />
-            </button>
+            </PlayButton>
           )}
         </ShowPlayControls>
       </ShowContainer>

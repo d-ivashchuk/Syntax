@@ -5,6 +5,7 @@ const FooterContainer = styled(StyledFooter)`
   text-align: center;
   color: white;
   max-width: 1000px;
+  padding-top: 1rem;
 `;
 
 const Footer = () => (
