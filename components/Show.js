@@ -71,7 +71,13 @@ class Show extends React.Component {
   };
 
   render() {
-    const { show, currentPlaying, currentShow, setCurrentPlaying } = this.props;
+    const {
+      show,
+      currentPlaying,
+      currentShow,
+      setCurrentPlaying,
+      isPlaying,
+    } = this.props;
 
     return (
       <ShowContainer
@@ -88,7 +94,7 @@ class Show extends React.Component {
 
         <ShowPlayControls>
           {currentPlaying === show.displayNumber ? (
-            <Bars />
+            <Bars isPlaying={isPlaying} />
           ) : (
             <PlayButton
               onClick={() => setCurrentPlaying(show.displayNumber)}

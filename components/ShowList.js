@@ -26,6 +26,7 @@ const ShowList = ({
   currentPlaying,
   currentShow,
   setCurrentPlaying,
+  isPlaying,
 }) => (
   <ShowListContainer>
     {shows.map(show => (
@@ -35,6 +36,7 @@ const ShowList = ({
         currentShow={currentShow}
         key={show.number}
         show={show}
+        isPlaying={isPlaying}
       />
     ))}
     <DummyShow />

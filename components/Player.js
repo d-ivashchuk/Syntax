@@ -1,7 +1,6 @@
 import React from 'react';
-import { FaPlay, FaPause, FaThemeisle } from 'react-icons/fa';
+import { FaPlay, FaPause } from 'react-icons/fa';
 import styled from 'styled-components';
-import Show from './Show';
 import formatTime from '../lib/formatTime';
 
 import { theme, mixins, media } from '../styles';
@@ -212,7 +211,7 @@ export default class Player extends React.Component {
   }
 
   timeUpdate = e => {
-    // console.log('Updating Time');
+    console.log('Updating Time');
     const { timeWasLoaded } = this.state;
     const { show } = this.props;
 
@@ -245,9 +244,9 @@ export default class Player extends React.Component {
   };
 
   playPause = () => {
+    const { getPlayerState } = this.props;
+    getPlayerState(!this.audio.paused);
     this.setState({ playing: !this.audio.paused });
-    // const method = this.audio.paused ? 'add' : 'remove';
-    // document.querySelector('.bars').classList[method]('bars--paused'); // 💩
   };
 
   volume = e => {

@@ -5,10 +5,7 @@ import ShowList from '../components/ShowList';
 import ShowNotes from '../components/ShowNotes';
 import Player from '../components/Player';
 import Meta from '../components/meta';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import Page from '../components/Page';
-
 import { theme, StyledWrapper } from '../styles';
 
 const Wrapper = styled(StyledWrapper)``;
@@ -29,7 +26,7 @@ export default class IndexPage extends React.Component {
     this.state = {
       currentShow,
       currentPlaying: currentShow,
-      playing: false,
+      isPlaying: false,
     };
   }
 
@@ -54,16 +51,18 @@ export default class IndexPage extends React.Component {
     }
   }
 
-  isPlaying = bool => this.setState({ playing: bool });
-
   setCurrentPlaying = currentPlaying => {
     console.log('Setting current playing');
     this.setState({ currentPlaying });
   };
 
+  getPlayerState = isPlaying => {
+    this.setState({ isPlaying });
+  };
+
   render() {
     const { shows = [], baseURL } = this.props;
-    const { currentShow, currentPlaying } = this.state;
+    const { currentShow, currentPlaying, isPlaying } = this.state;
     // Currently Shown shownotes
     const currentShowNotes = shows.find(
       show => show.displayNumber === currentShow
@@ -71,23 +70,18 @@ export default class IndexPage extends React.Component {
     // Currently Playing
     const current = shows.find(show => show.displayNumber === currentPlaying);
 
-    console.log(this.state.playing);
-
     return (
       <Page>
         <Meta show={currentShowNotes} baseURL={baseURL} />
         <Wrapper>
           <ShowWrap id="main" tabIndex="-1">
-            <Player
-              show={current}
-              ref={x => (this.player = x)}
-              isPlaying={this.isPlaying}
-            />
+            <Player show={current} getPlayerState={this.getPlayerState} />
             <ShowList
               shows={shows}
               currentShow={currentShow}
               currentPlaying={currentPlaying}
               setCurrentPlaying={this.setCurrentPlaying}
+              isPlaying={isPlaying}
             />
             <ShowNotes
               show={currentShowNotes}

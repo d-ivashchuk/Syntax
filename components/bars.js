@@ -1,15 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { theme } from '../styles';
 
-const BarsContainer = styled.div`
-  height: 30px;
-  width: 40px;
-  position: relative;
-
-  & > * {
-    animation-play-state: ${props => (props.playing ? `paused` : `running`)};
-  }
-`;
 const sound = keyframes`
   0% {
     opacity: .35;
@@ -71,9 +62,18 @@ const Bar = styled.div`
     animation-duration: 442ms;
   }
 `;
+const BarsContainer = styled.div`
+  height: 30px;
+  width: 40px;
+  position: relative;
 
-const Bars = ({ playing }) => (
-  <BarsContainer playing={playing}>
+  & > ${Bar} {
+    animation-play-state: ${props => (props.isPlaying ? `running` : `paused`)};
+  }
+`;
+
+const Bars = ({ isPlaying }) => (
+  <BarsContainer isPlaying={isPlaying}>
     <Bar />
     <Bar />
     <Bar />
