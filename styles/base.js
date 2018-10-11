@@ -62,30 +62,25 @@ const base = injectGlobal`
   a {
     color: ${theme.colors.yellow};
     text-decoration: none;
-
     &:active,
     &:hover {
       outline:0;
     }
-
     &:focus {
       outline: thin dotted;
     }
   }
 
-
   button, input, select, textarea {
     font-family: inherit;
     font-size: 100%;
     margin: 0;
-  }
-  button, input {
     line-height: normal;
   }
-  button,html input[type=button],
-  input[type=reset],input[type=submit] {
-  -webkit-appearance:button;
-  cursor: pointer;
+  button, html input[type=button],
+  input[type=reset], input[type=submit] {
+    -webkit-appearance:button;
+    cursor: pointer;
   }
   button[disabled],input[disabled] {
     cursor: default;
@@ -94,11 +89,18 @@ const base = injectGlobal`
     overflow: auto;
     vertical-align: top;
   }
-
+  button {
+    border: 0;
+    background: ${theme.colors.lightgrey};
+    color: ${theme.colors.black};
+    line-height: 1;
+    padding: 1rem;
+    display: inline-block;
+    transition: all 0.2s;
+  }
   figure, figcaption {
     margin: 0;
   }
-
   audio, canvas, video {
     display: inline-block;
   }

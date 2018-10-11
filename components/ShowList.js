@@ -8,6 +8,10 @@ const ShowListContainer = styled.div`
   width: 38%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 650px) {
+    width: 100%;
+  }
 `;
 const DummyShow = styled.div`
   display: flex;

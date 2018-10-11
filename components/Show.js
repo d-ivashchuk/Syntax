@@ -18,11 +18,11 @@ const ShowContainer = styled.div`
     props.active ? 0 : `10px solid ${theme.colors.grey}`};
   border-right-color: ${props =>
     props.active ? theme.colors.white : theme.colors.grey};
-  padding-left: ${props => (props.active ? `1rem` : ``)};
+  padding-left: ${props => (props.active ? `10px` : ``)};
 
   &:before {
     content: '';
-    display: ${props => (props.active ? 'block' : 'none')};
+    display: ${props => (props.active ? `block` : `none`)};
     background: ${theme.colors.grad};
     position: absolute;
     top: 0;
@@ -44,6 +44,7 @@ const ShowNumber = styled.p`
 const ShowTitle = styled.h3`
   color: ${theme.colors.black};
   font-size: 1rem;
+  line-height: 1.3;
   margin: 0;
 `;
 const ShowPlayControls = styled.div`

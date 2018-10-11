@@ -5,6 +5,7 @@ import base from './base';
 import StyledHeader from './header';
 import StyledFooter from './footer';
 import StyledWrapper from './wrapper';
+import StyledButton from './button';
 
 export {
   theme,
@@ -14,4 +15,5 @@ export {
   StyledHeader,
   StyledFooter,
   StyledWrapper,
+  StyledButton,
 };
