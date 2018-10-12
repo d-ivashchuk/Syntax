@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { theme, mixins, media, StyledButton } from '../styles';
 
 const ShowNotesContainer = styled.div`
-  padding: 1rem;
+  padding: 2rem;
   width: 62%;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   ${media.phablet`
     width: 100%;
   `};
@@ -15,7 +15,7 @@ const ShowNotesContainer = styled.div`
     padding: 1rem;
   }
   ul {
-    padding-left: 1rem;
+    padding-left: 2rem;
     list-style-type: circle;
   }
   li {
@@ -45,12 +45,12 @@ const ShowDate = styled.p`
   margin-top: 0;
   text-align: right;
   color: ${theme.colors.grey3};
-  font-size: 0.75rem;
+  font-size: 1.2rem;
 `;
 const ShowTitle = styled.h2`
   font-family: 'courier';
   font-weight: 100;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   border-bottom: 1px solid ${theme.colors.grey};
   padding-bottom: 1rem;
   &:before {
@@ -62,16 +62,10 @@ const ButtonIcon = styled.span`
   padding-right: 0.5rem;
   margin-right: 0.5rem;
 `;
-const PlayButton = styled(StyledButton)`
-  margin-right: 0.75rem;
-`;
-const DownloadButton = styled.a`
+const PlayButton = styled(StyledButton)``;
+const ShowNotesButton = styled.a`
   ${mixins.button};
-  margin-right: 0.75rem;
-  border: 0 !important;
-`;
-const EditButton = styled.a`
-  ${mixins.button};
+  margin-left: 1rem;
   border: 0 !important;
 `;
 
@@ -85,16 +79,16 @@ const ShowNotes = ({ show, setCurrentPlaying }) => (
     >
       <ButtonIcon>🎵</ButtonIcon> Play Episode {show.displayNumber}
     </PlayButton>
-    <DownloadButton download href={show.url}>
+    <ShowNotesButton download href={show.url}>
       <ButtonIcon>👇</ButtonIcon> Download Show
-    </DownloadButton>
-    <EditButton
+    </ShowNotesButton>
+    <ShowNotesButton
       href={`https://github.com/wesbos/Syntax/edit/master/${show.notesFile}`}
       target="_blank"
       rel="noopener noreferrer"
     >
       <ButtonIcon>✏️</ButtonIcon> Edit Show Notes
-    </EditButton>
+    </ShowNotesButton>
     <div dangerouslySetInnerHTML={{ __html: show.html }} />
   </ShowNotesContainer>
 );

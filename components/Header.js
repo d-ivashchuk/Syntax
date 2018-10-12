@@ -5,7 +5,7 @@ import Subscribe from './Subscribe';
 const HeaderContainer = styled(StyledHeader)`
   display: flex;
   flex-wrap: wrap;
-  margin: 1rem auto;
+  margin: 2rem auto;
   color: ${theme.colors.white};
 `;
 const HeaderLeft = styled.div`
@@ -16,7 +16,7 @@ const HeaderLeft = styled.div`
   `};
 `;
 const Logo = styled.img`
-  margin-left: -2rem;
+  margin-left: -3rem;
   max-width: 300px;
   text-align: center;
   ${media.tablet`
@@ -36,7 +36,7 @@ const Title = styled.div`
   position: relative;
 `;
 const Tagline = styled.h2`
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   margin: 0;
   ${media.desktop`
     text-align: center;
@@ -74,7 +74,7 @@ const People = styled.div`
 const Person = styled.div`
   display: flex;
   background: rgba(255, 255, 255, 0.07);
-  padding: 0.5rem;
+  padding: 1rem;
   width: 48%;
   ${media.tablet`
     width: 100%;
@@ -97,7 +97,7 @@ const Avatar = styled.img`
 const PersonDetails = styled.div``;
 const Name = styled.h3`
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 2rem;
   em {
     font-size: 1rem;
   }

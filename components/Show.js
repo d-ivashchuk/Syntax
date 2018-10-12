@@ -18,7 +18,7 @@ const ShowContainer = styled.div`
     props.active ? 0 : `10px solid ${theme.colors.grey}`};
   border-right-color: ${props =>
     props.active ? theme.colors.white : theme.colors.grey};
-  padding-left: ${props => (props.active ? `10px` : ``)};
+  padding-left: ${props => (props.active ? `1rem` : ``)};
 
   &:before {
     content: '';
@@ -33,7 +33,7 @@ const ShowContainer = styled.div`
 `;
 const ShowLink = styled.a`
   flex: 1 1 auto;
-  padding: 0.75rem;
+  padding: 10px;
 `;
 const ShowNumber = styled.p`
   text-transform: uppercase;
@@ -43,15 +43,14 @@ const ShowNumber = styled.p`
 `;
 const ShowTitle = styled.h3`
   color: ${theme.colors.black};
-  font-size: 1rem;
-  line-height: 1.3;
+  font-size: 1.5rem;
   margin: 0;
 `;
 const ShowPlayControls = styled.div`
   ${mixins.flexCenter};
-  width: 3rem;
+  width: 5rem;
   flex-shrink: 0;
-  padding: 0.5rem;
+  padding: 1rem;
 `;
 const PlayButton = styled.button`
   background: none;

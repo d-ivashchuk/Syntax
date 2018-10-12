@@ -24,7 +24,7 @@ const mixins = {
     border: 0;
     background: ${theme.colors.lightgrey};
     color: black;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     line-height: 1;
     transition: all 0.2s;
     &:hover {

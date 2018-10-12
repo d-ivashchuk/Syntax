@@ -17,6 +17,7 @@ const base = injectGlobal`
   html {
     box-sizing: border-box;
     width: 100%;
+    font-size: 10px;
   }
 
   *,

@@ -27,6 +27,7 @@ const PlayerContainer = styled.div`
     padding: 1rem;
     border-right: 1px solid rgba(0, 0, 0, 0.6);
     outline-color: ${theme.colors.yellow};
+    font-size: 10px;
   }
 `;
 const PlayerSection = styled.div`
@@ -44,9 +45,9 @@ const PlayButton = styled.button`
   width: 100%;
 `;
 const PlayerIcon = styled.div`
-  font-size: 1.25rem;
+  font-size: 2rem;
   line-height: 0.5;
-  margin: 1rem 0;
+  margin: 2rem 0;
 `;
 const PlayerTime = styled.span`
   margin-bottom: 10px;
@@ -80,13 +81,13 @@ const PlayerSpeed = styled.button`
   `};
 `;
 const SpeedDisplay = styled.span`
-  height: 1.5rem;
+  height: 2.5rem;
   line-height: 2;
 `;
 const Progress = styled.div`
   background: #0d0d0d;
   width: 100%;
-  height: 1rem;
+  height: 2rem;
   cursor: crosshair;
   overflow: hidden;
 `;
@@ -105,8 +106,8 @@ const PlayerTitle = styled.h3`
   max-width: 650px;
   width: 100%;
   margin: 0;
-  padding-left: 1rem;
-  font-size: 1rem;
+  padding-left: 2rem;
+  font-size: 1.5rem;
   ${media.phablet`
     padding: 1rem;
   `};
@@ -160,7 +161,7 @@ const PlayerVolume = styled.div`
       border-right: 2px solid ${theme.colors.black};
       display: inline-block;
       width: 8px;
-      height: 1.5rem;
+      height: 2.5rem;
     }
     &:checked {
       ~ label {

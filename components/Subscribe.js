@@ -25,14 +25,13 @@ const SubscribeLink = styled.li`
   a {
     display: flex;
     align-items: center;
-    /* background: yellow; */
+    background: ${theme.colors.yellow};
     color: rgba(0, 0, 0, 0.8);
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.2);
     box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.05);
     border-radius: 3px;
-    padding: 0.5rem 0.7rem;
-    font-size: 14px;
-    line-height: 1;
+    padding: 0.7rem 1rem;
+    font-size: 1.5rem;
     font-family: sans-serif;
     font-weight: 100;
     text-align: center;
