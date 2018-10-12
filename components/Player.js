@@ -12,14 +12,11 @@ const PlayerContainer = styled.div`
   top: -1px;
   bottom: 0;
   width: 100%;
-  height: 100px;
   background: ${theme.colors.black};
   border-top: 1px solid ${theme.colors.yellow};
   color: ${theme.colors.white};
   z-index: 2;
-  & > * {
-    height: 100%;
-  }
+
   button {
     ${mixins.flexCenter};
     justify-content: space-around;
@@ -32,7 +29,11 @@ const PlayerContainer = styled.div`
     outline-color: ${theme.colors.yellow};
   }
 `;
-const PlayerLeft = styled.div`
+const PlayerSection = styled.div`
+  order: 2;
+  background: ${theme.colors.black};
+`;
+const PlayerLeft = styled(PlayerSection)`
   width: 100px;
   min-width: 80px;
   ${media.phablet`
@@ -47,7 +48,10 @@ const PlayerIcon = styled.div`
   line-height: 0.5;
   margin: 1rem 0;
 `;
-const PlayerMiddle = styled.div`
+const PlayerTime = styled.span`
+  margin-bottom: 10px;
+`;
+const PlayerMiddle = styled(PlayerSection)`
   border-right: 1px solid rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
@@ -57,20 +61,23 @@ const PlayerMiddle = styled.div`
     width: 100%;
   `};
 `;
-const PlayerRight = styled.div`
+const PlayerRight = styled(PlayerSection)`
   display: flex;
   ${media.phablet`
     flex: 2;
   `};
 `;
 const PlayerSpeed = styled.button`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
   flex: 0 1 auto;
   padding: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  flex-direction: column;
-  align-items: center;
+  ${media.phablet`
+    flex-grow: 1;
+  `};
 `;
 const SpeedDisplay = styled.span`
   height: 1.5rem;
@@ -127,6 +134,10 @@ const PlayerVolume = styled.div`
   font-weight: normal;
   letter-spacing: 0px;
 
+  ${media.phablet`
+    flex-grow: 0;
+  `};
+
   &:focus-within {
     outline: -webkit-focus-ring-color auto 5px;
   }
@@ -171,7 +182,9 @@ class Player extends React.Component {
     if (typeof window !== 'undefined') {
       const { show } = this.props;
       const lp = localStorage.getItem(`lastPlayed${show.number}`);
-      if (lp) lastPlayed = JSON.parse(lp).lastPlayed;
+      if (lp) {
+        lastPlayed = JSON.parse(lp).lastPlayed;
+      }
     }
 
     this.state = {
@@ -281,14 +294,19 @@ class Player extends React.Component {
             type="button"
           >
             <PlayerIcon>{playing ? <FaPause /> : <FaPlay />}</PlayerIcon>
-            <span>
+            <PlayerTime>
               {formatTime(currentTime)} / {formatTime(duration)}
-            </span>
+            </PlayerTime>
           </PlayButton>
         </PlayerLeft>
 
         <PlayerMiddle>
-          <Progress onClick={this.scrub} innerRef={x => (this.progress = x)}>
+          <Progress
+            onClick={this.scrub}
+            innerRef={x => {
+              this.progress = x;
+            }}
+          >
             <ProgressTime style={{ width: `${progressTime}%` }} />
           </Progress>
           <PlayerTitle>
@@ -411,7 +429,9 @@ class Player extends React.Component {
         </PlayerRight>
 
         <audio
-          ref={audio => (this.audio = audio)}
+          ref={audio => {
+            this.audio = audio;
+          }}
           onPlay={this.playPause}
           onPause={this.playPause}
           onTimeUpdate={this.timeUpdate}
@@ -424,6 +444,7 @@ class Player extends React.Component {
 }
 
 Player.propTypes = {
+  show: PropTypes.object.isRequired,
   getPlayerState: PropTypes.func.isRequired,
 };
 

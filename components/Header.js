@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 import { theme, media, StyledHeader } from '../styles';
-
 import Subscribe from './Subscribe';
 
 const HeaderContainer = styled(StyledHeader)`
   display: flex;
   flex-wrap: wrap;
-  margin: 2rem auto;
+  margin: 1rem auto;
   color: ${theme.colors.white};
 `;
 const HeaderLeft = styled.div`
@@ -17,7 +16,7 @@ const HeaderLeft = styled.div`
   `};
 `;
 const Logo = styled.img`
-  margin-left: -3rem;
+  margin-left: -2rem;
   max-width: 300px;
   text-align: center;
   ${media.tablet`
@@ -149,7 +148,6 @@ const Header = () => (
             </About>
           </PersonDetails>
         </Person>
-
         <Person>
           <Avatar
             src="https://avatars2.githubusercontent.com/u/669383?s=460&v=4"

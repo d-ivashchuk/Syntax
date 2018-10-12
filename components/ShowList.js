@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Show from './Show';
-
 import { theme, media } from '../styles';
 
 const ShowListContainer = styled.div`
@@ -44,3 +44,11 @@ const ShowList = ({
 );
 
 export default ShowList;
+
+ShowList.propTypes = {
+  shows: PropTypes.array.isRequired,
+  currentPlaying: PropTypes.string.isRequired,
+  currentShow: PropTypes.string.isRequired,
+  setCurrentPlaying: PropTypes.func.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+};

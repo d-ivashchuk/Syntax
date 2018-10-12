@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import ShowList from '../components/ShowList';
 import ShowNotes from '../components/ShowNotes';
 import Player from '../components/Player';
@@ -15,7 +16,7 @@ const ShowWrap = styled.div`
   flex-wrap: wrap;
 `;
 
-export default class IndexPage extends React.Component {
+class IndexPage extends React.Component {
   constructor(props) {
     super();
 
@@ -56,6 +57,7 @@ export default class IndexPage extends React.Component {
     this.setState({ currentPlaying });
   };
 
+  // Passed down to Player component to fish out the state of the player to animate the bars
   getPlayerState = isPlaying => {
     this.setState({ isPlaying });
   };
@@ -93,3 +95,11 @@ export default class IndexPage extends React.Component {
     );
   }
 }
+
+IndexPage.propTypes = {
+  url: PropTypes.object.isRequired,
+  shows: PropTypes.array.isRequired,
+  baseURL: PropTypes.string.isRequired,
+};
+
+export default IndexPage;

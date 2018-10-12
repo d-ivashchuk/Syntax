@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import slug from 'speakingurl';
 import Router from 'next/router';
 import { FaPlay } from 'react-icons/fa';
+import slug from 'speakingurl';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Bars from './bars';
 import { theme, mixins } from '../styles';
 
